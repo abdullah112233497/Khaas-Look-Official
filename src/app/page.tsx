@@ -1,4 +1,5 @@
 "use client";
+import Head from "next/head";
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -62,6 +63,19 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-[#F5F5F5] text-[#1B1B1B]">
+
+        {/* ✅ Place <Head> here, before any visible UI */}
+      <Head>
+        <title>Khaas Look - Official Store</title>
+        <meta
+          name="description"
+          content="Elegant ladies clothing at affordable prices. Order now from Khaas Look!"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Khaas Look" />
+        <link rel="canonical" href="https://khaas-look.vercel.app" />
+        <meta name="google-site-verification" content="google5b63d1fb5b3e5579.html" />
+      </Head>
       {/* Navbar */}
       <nav className="bg-black p-4 flex items-center justify-between relative">
         {/* Logo and Brand */}
@@ -75,6 +89,7 @@ export default function HomePage() {
           />
           <span className="text-lg sm:text-xl font-extrabold text-[#F6D86A]">Khaas Look</span>
         </div>
+          
 
         {/* Hamburger Menu - Always Visible */}
         <div className="relative" ref={menuRef}>
