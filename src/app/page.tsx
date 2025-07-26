@@ -57,7 +57,7 @@ export default function HomePage() {
             height={50}
             className="rounded-full"
           />
-          <span className="text-xl font-bold text-black-900">Khaas Look</span>
+          <span className="text-xl font-bold text-black">Khaas Look</span>
         </div>
       </nav>
 
