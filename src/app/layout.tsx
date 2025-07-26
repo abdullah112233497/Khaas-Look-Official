@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Khaas Look Official",
   description: "Khaas look Official Site",
   icons: {
-    icon: "/favicon.ico", // This sets your favicon
+    icon: "/Khaas Look logo.jpg", // This sets your favicon
   },
 };
 
