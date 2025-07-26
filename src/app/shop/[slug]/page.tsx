@@ -59,7 +59,7 @@ export default function ProductDetailPage() {
           className="rounded-full animate-pulse"
         />
         {isNavigating && (
-          <p className="mt-4 text-lg font-semibold text-blue-600">Returning to Home...</p>
+          <p className="mt-4 text-lg font-semibold text-black">Returning to Home...</p>
         )}
       </div>
     );

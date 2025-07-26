@@ -57,11 +57,11 @@ export default function HomePage() {
             height={50}
             className="rounded-full"
           />
-          <span className="text-xl font-bold text-black">Khaas Look</span>
+          <span className="text-xl font-extrabold text-black">Khaas Look</span>
         </div>
       </nav>
 
-      <h1 className="text-3xl font-bold mb-6 text-center text-blue-900">Welcome to Khaas Look</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center text-black">Welcome to Khaas Look</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-6 pb-6">
         {products.map((product) => (
@@ -98,6 +98,46 @@ export default function HomePage() {
           </div>
         ))}
       </div>
+      {/* Footer */}
+<div className="bg-white border-t mt-10 py-6 px-4 text-center">
+  <h3 className="text-lg font-semibold text-blue-900 mb-4">Follow Us</h3>
+  <div className="flex justify-center space-x-6 mb-4">
+    <a
+      href="https://www.facebook.com/share/1FdjigndyY/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-blue-600 hover:text-blue-800 transition"
+    >
+      <Image src="/icons/facebook.svg" alt="Facebook" width={24} height={24} />
+    </a>
+    <a
+      href="https://www.instagram.com/khaaslook?igsh=MWd2eTl1ODM5cml1NQ=="
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-pink-600 hover:text-pink-800 transition"
+    >
+      <Image src="/icons/instagram.svg" alt="Instagram" width={24} height={24} />
+    </a>
+    <a
+      href="https://wa.me/923032966692"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-green-600 hover:text-green-800 transition"
+    >
+      <Image src="/icons/whatsapp.svg" alt="WhatsApp" width={24} height={24} />
+    </a>
+    <a
+      href="https://www.tiktok.com/@khaaslook?_t=ZS-8yLTrVlsfcQ&_r=1"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-black hover:text-gray-800 transition"
+    >
+      <Image src="/icons/tiktok.svg" alt="TikTok" width={24} height={24} />
+    </a>
+  </div>
+  <p className="text-sm text-gray-500">&copy; 2025 Khaas Look. All rights reserved.</p>
+</div>
+
     </div>
   );
 }
