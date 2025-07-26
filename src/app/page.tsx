@@ -1,103 +1,103 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+const products = [
+  {
+    id: 1,
+    name: "Elegant Blue Dress",
+    image: "/Limelight_lawn.jpeg",
+    slug: "elegant-blue-dress",
+    price: "PKR 3,999",
+    description: "An elegant blue formal dress, perfect for parties and formal events.",
+  },
+  {
+    id: 2,
+    name: "Golden Party Wear",
+    image: "/Limelight_lawn.jpeg",
+    slug: "golden-party-wear",
+    price: "PKR 5,499",
+    description: "Shimmering golden dress designed for glamorous evening occasions.",
+  },
+];
+
+export default function HomePage() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1200);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-white">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+          src="/Khaas Look logo.jpg"
+          alt="Khaas Look Logo"
+          width={150}
+          height={150}
+          className="rounded-full animate-pulse"
         />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+      </div>
+    );
+  }
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-yellow-50 text-gray-800">
+      {/* Navbar */}
+      <nav className="bg-white shadow p-4 flex items-center justify-between mb-6">
+        <div className="flex items-center space-x-4">
+          <Image
+            src="/Khaas Look logo.jpg"
+            alt="Khaas Look Logo"
+            width={50}
+            height={50}
+            className="rounded-full"
+          />
+          <span className="text-xl font-bold text-blue-900">Khaas Look</span>
+        </div>
+      </nav>
+
+      <h1 className="text-3xl font-bold mb-6 text-center text-blue-900">Welcome to Khaas Look</h1>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-6 pb-6">
+        {products.map((product) => (
+          <div
+            key={product.id}
+            className="bg-white shadow rounded-xl overflow-hidden hover:shadow-lg transition-all"
           >
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src={product.image}
+              alt={product.name}
+              width={400}
+              height={400}
+              className="w-full h-80 object-cover"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+            <div className="p-4 space-y-2">
+              <h2 className="text-xl font-semibold text-blue-800">{product.name}</h2>
+              <p className="text-gray-600">{product.price}</p>
+              <div className="flex space-x-2">
+                <Link
+                  href={`/shop/${product.slug}`}
+                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                >
+                  View Details
+                </Link>
+                <a
+                  href={`https://wa.me/923032966692?text=Hello! I am interested in the product: ${product.name} (${product.price})`}
+                  target="_blank"
+                  className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
+                >
+                  Order Now
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
