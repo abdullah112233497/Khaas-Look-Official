@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Khaas Look Official",
   description: "Khaas look Official Site",
-  icons: {
-    icon: "/Khaas Look logo.jpg", // This sets your favicon
-  },
+ icons: {
+  icon: "/favicon.ico",
+},
 };
 
 export default function RootLayout({
