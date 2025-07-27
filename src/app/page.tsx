@@ -1,6 +1,5 @@
 "use client";
 import Head from "next/head";
-
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -49,7 +48,7 @@ export default function HomePage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="min-h-screen flex items-center justify-center bg-white overflow-x-hidden">
         <Image
           src="/Khaas Look logo.jpg"
           alt="Khaas Look Logo"
@@ -62,9 +61,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F5F5F5] text-[#1B1B1B]">
-
-        {/* ✅ Place <Head> here, before any visible UI */}
+    <div className="min-h-screen bg-[#F5F5F5] text-[#1B1B1B] overflow-x-hidden">
       <Head>
         <title>Khaas Look - Official Store</title>
         <meta
@@ -76,9 +73,9 @@ export default function HomePage() {
         <link rel="canonical" href="https://khaas-look.vercel.app" />
         <meta name="google-site-verification" content="google5b63d1fb5b3e5579.html" />
       </Head>
+
       {/* Navbar */}
       <nav className="bg-black p-4 flex items-center justify-between relative">
-        {/* Logo and Brand */}
         <div className="flex items-center space-x-3">
           <Image
             src="/Khaas Look logo.jpg"
@@ -89,9 +86,8 @@ export default function HomePage() {
           />
           <span className="text-lg sm:text-xl font-extrabold text-[#F6D86A]">Khaas Look</span>
         </div>
-          
 
-        {/* Hamburger Menu - Always Visible */}
+        {/* Hamburger Menu */}
         <div className="relative" ref={menuRef}>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -100,10 +96,9 @@ export default function HomePage() {
             <Menu size={28} />
           </button>
 
-          {/* Dropdown Menu */}
           <div
-            className={`absolute right-0 mt-2 w-40 bg-white shadow-lg rounded py-2 z-50 transform transition-all duration-300 ease-in-out ${
-              menuOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0 pointer-events-none"
+            className={`absolute right-0 mt-2 w-40 bg-white shadow-lg rounded py-2 z-50 transition-opacity duration-300 ease-in-out ${
+              menuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
             }`}
           >
             <Link
@@ -123,7 +118,9 @@ export default function HomePage() {
       </nav>
 
       {/* Heading */}
-      <h1 className="text-2xl sm:text-3xl font-extrabold text-center mt-6 mb-4 px-4">Welcome to Khaas Look</h1>
+      <h1 className="text-2xl sm:text-3xl font-extrabold text-center mt-6 mb-4 px-4">
+        Welcome to Khaas Look
+      </h1>
 
       {/* Search Bar */}
       <div className="flex justify-center px-4 mb-8">
@@ -150,7 +147,6 @@ export default function HomePage() {
             key={product.id}
             className="bg-white shadow-md hover:shadow-lg transition-all rounded-2xl overflow-hidden flex flex-col"
           >
-            {/* Product Image */}
             <div className="relative w-full pt-[110%]">
               <Image
                 src={product.image}
@@ -160,7 +156,6 @@ export default function HomePage() {
               />
             </div>
 
-            {/* Product Info */}
             <div className="p-4 flex flex-col justify-between h-full space-y-2">
               <h2 className="text-lg font-bold text-blue-900">{product.name}</h2>
               <p className="text-gray-700 font-medium">{product.price}</p>
@@ -175,6 +170,7 @@ export default function HomePage() {
                 <a
                   href={`https://wa.me/923032966692?text=Hello! I am interested in the product: ${product.name} (${product.price})`}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1.5 rounded-lg text-sm font-medium"
                 >
                   Order Now
@@ -189,32 +185,16 @@ export default function HomePage() {
       <footer className="bg-white border-t mt-10 py-6 px-4 text-center">
         <h3 className="text-lg font-semibold text-blue-900 mb-4">Follow Us</h3>
         <div className="flex justify-center space-x-6 mb-4">
-          <a
-            href="https://www.facebook.com/share/1FdjigndyY/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://www.facebook.com/share/1FdjigndyY/" target="_blank" rel="noopener noreferrer">
             <Image src="/icons/facebook.svg" alt="Facebook" width={24} height={24} />
           </a>
-          <a
-            href="https://www.instagram.com/khaaslook?igsh=MWd2eTl1ODM5cml1NQ=="
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://www.instagram.com/khaaslook?igsh=MWd2eTl1ODM5cml1NQ==" target="_blank" rel="noopener noreferrer">
             <Image src="/icons/instagram.svg" alt="Instagram" width={24} height={24} />
           </a>
-          <a
-            href="https://wa.me/923032966692"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://wa.me/923032966692" target="_blank" rel="noopener noreferrer">
             <Image src="/icons/whatsapp.svg" alt="WhatsApp" width={24} height={24} />
           </a>
-          <a
-            href="https://www.tiktok.com/@khaaslook?_t=ZS-8yLTrVlsfcQ&_r=1"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://www.tiktok.com/@khaaslook?_t=ZS-8yLTrVlsfcQ&_r=1" target="_blank" rel="noopener noreferrer">
             <Image src="/icons/tiktok.svg" alt="TikTok" width={24} height={24} />
           </a>
         </div>
