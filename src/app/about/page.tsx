@@ -3,13 +3,9 @@
 import Head from "next/head";
 import Image from "next/image";
 
-
-export default function AboutPage()
- {
+export default function AboutPage() {
   return (
-    
     <>
-    
       {/* ✅ SEO Meta Tags */}
       <Head>
         <title>About Us | Khaas Look</title>
@@ -29,13 +25,13 @@ export default function AboutPage()
           </h1>
 
           <p className="text-lg leading-relaxed mb-6 text-center">
-            <strong>Khaas Look</strong> is a modern <strong>ladies' unstitched clothing</strong> brand based in the heart of{" "}
+            <strong>Khaas Look</strong> is a modern <strong>ladies&apos; unstitched clothing</strong> brand based in the heart of{" "}
             <strong>Faisalabad, Punjab, Pakistan</strong>. Our mission is to provide high-quality fabrics and elegant designs at{" "}
             <span className="text-yellow-500 font-semibold">very affordable prices</span> — bringing style and comfort to every woman.
           </p>
 
           <p className="text-lg leading-relaxed mb-6 text-center">
-            Whether you're shopping for daily wear, festive outfits, or something special, Khaas Look has the perfect option tailored to your taste.
+            Whether you&apos;re shopping for daily wear, festive outfits, or something special, Khaas Look has the perfect option tailored to your taste.
           </p>
 
           <div className="mt-10">
@@ -46,11 +42,11 @@ export default function AboutPage()
 
             <h2 className="text-2xl font-semibold text-black-800 mb-3">🔄 Easy Return Policy</h2>
             <p className="text-lg mb-6">
-              Your satisfaction is our priority. If something isn’t right, don’t worry! We offer a <strong>customer-friendly return policy</strong> to make your shopping experience stress-free and reliable.
+              Your satisfaction is our priority. If something isn&apos;t right, don&apos;t worry! We offer a <strong>customer-friendly return policy</strong> to make your shopping experience stress-free and reliable.
             </p>
 
             <p className="text-lg font-medium text-center mt-10">
-              Thank you for choosing <span className="text-black-800 font-bold">Khaas Look</span>. We’re proud to be a part of your wardrobe journey.
+              Thank you for choosing <span className="text-black-800 font-bold">Khaas Look</span>. We&apos;re proud to be a part of your wardrobe journey.
             </p>
           </div>
         </div>
