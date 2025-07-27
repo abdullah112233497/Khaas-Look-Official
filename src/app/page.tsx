@@ -31,7 +31,7 @@ export default function HomePage() {
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1000);
+    const timer = setTimeout(() => setIsLoading(false), 1200);
     return () => clearTimeout(timer);
   }, []);
 
@@ -74,6 +74,48 @@ export default function HomePage() {
         <meta name="google-site-verification" content="google5b63d1fb5b3e5579.html" />
       </Head>
 
+      {/* Navbar */}
+      <nav className="bg-black p-4 flex items-center justify-between relative">
+        <div className="flex items-center space-x-3">
+          <Image
+            src="/Khaas Look logo.jpg"
+            alt="Khaas Look Logo"
+            width={40}
+            height={40}
+            className="rounded-full"
+          />
+          <span className="text-lg sm:text-xl font-extrabold text-[#F6D86A]">Khaas Look</span>
+        </div>
+
+        {/* Hamburger Menu */}
+        <div className="relative" ref={menuRef}>
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-[#F6D86A] focus:outline-none"
+          >
+            <Menu size={28} />
+          </button>
+
+          <div
+            className={`absolute right-0 mt-2 w-40 bg-white shadow-lg rounded py-2 z-50 transition-opacity duration-300 ease-in-out ${
+              menuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+            }`}
+          >
+            <Link
+              href="/about"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            >
+              About
+            </Link>
+            <Link
+              href="/contact"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            >
+              Contact
+            </Link>
+          </div>
+        </div>
+      </nav>
 
       {/* Heading */}
       <h1 className="text-2xl sm:text-3xl font-extrabold text-center mt-6 mb-4 px-4">
