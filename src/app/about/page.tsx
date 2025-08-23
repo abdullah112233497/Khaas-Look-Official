@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 export default function AboutPage() {
   return (
     <>
+    <div className="font-montserrat">
       {/* ✅ SEO Meta Tags */}
       <Head>
         <title>About Us | Khaas Look</title>
@@ -182,6 +183,7 @@ export default function AboutPage() {
           &copy; 2025 Khaas Look. All rights reserved.
         </p>
       </motion.footer>
+      </div>
     </>
   );
 }

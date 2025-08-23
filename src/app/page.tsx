@@ -69,7 +69,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F5F5F5] text-[#1B1B1B] overflow-x-hidden">
+    <div className="min-h-screen bg-[#F5F5F5] text-[#1B1B1B] overflow-x-hidden font-montserrat">
       <Head>
         <title>Khaas Look - Official Store</title>
         <meta name="description" content="Elegant ladies clothing at affordable prices. Order now from Khaas Look!" />
@@ -87,8 +87,8 @@ export default function HomePage() {
       className="rounded-full"
     />
     <span className=" font-extrabold">
-      <span className="text-[#1B1B1B] text-lg sm:text-xl">Khaas</span>
-      <span className="text-[#F6D86A] text-base">Look</span>
+      <span className="text-[#1B1B1B]  text-xl  sm:text-xl font-adria">Khaas</span>
+      <span className="text-[#F6D86A] text-base text-lg font-lucidan">Look</span>
     </span>
   </div>
 

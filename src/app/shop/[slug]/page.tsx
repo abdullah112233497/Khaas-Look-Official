@@ -70,7 +70,7 @@ export default function ProductDetailPage() {
   return (
     <AnimatePresence>
       <motion.div
-        className="min-h-screen bg-gradient-to-b from-blue-50 to-yellow-50 text-gray-800 p-6 flex items-center justify-center"
+        className="min-h-screen bg-gradient-to-b from-blue-50 to-yellow-50 text-gray-800 p-6 flex items-center justify-center font-montserrat"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
