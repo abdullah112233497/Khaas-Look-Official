@@ -18,8 +18,12 @@ export default function ContactPage() {
         <link rel="canonical" href="https://khaas-look.vercel.app/contact" />
       </Head>
 
+
+      
+
       {/* ✅ Page Content */}
       <div className="min-h-screen bg-gradient-to-b from-white to-blue-50 px-6 py-16 md:px-20 text-gray-800">
+        
         <motion.div
           className="max-w-4xl mx-auto text-center"
           initial={{ opacity: 0, y: 50 }}

@@ -6,6 +6,8 @@ import Link from "next/link";
 import { Menu } from "lucide-react";
 import { motion } from "framer-motion";
 
+
+
 const products = [
   {
     id: 1,
@@ -74,40 +76,54 @@ export default function HomePage() {
       </Head>
 
       {/* Navbar */}
-      <nav className="bg-black p-4 flex items-center justify-between relative shadow-md">
-        <div className="flex items-center space-x-3">
-          <Image
-            src="/Khaas Look logo.jpg"
-            alt="Khaas Look Logo"
-            width={40}
-            height={40}
-            className="rounded-full"
-          />
-          <span className="text-lg sm:text-xl font-extrabold text-[#F6D86A]">Khaas Look</span>
-        </div>
+<nav className="bg-[#F5F5F5] p-4 flex items-center justify-between relative shadow-md">
+  {/* Left: Logo */}
+  <div className="flex items-center space-x-3">
+    <Image
+      src="/Khaas Look logo.jpg"
+      alt="Khaas Look Logo"
+      width={40}
+      height={40}
+      className="rounded-full"
+    />
+    <span className=" font-extrabold">
+      <span className="text-[#1B1B1B] text-lg sm:text-xl">Khaas</span>
+      <span className="text-[#F6D86A] text-base">Look</span>
+    </span>
+  </div>
 
-        {/* Hamburger Menu */}
-        <div className="relative" ref={menuRef}>
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="text-[#F6D86A] focus:outline-none"
-          >
-            <Menu size={28} />
-          </button>
+  {/* Desktop Menu (shown on md+ screens) */}
+  <div className="hidden md:flex space-x-10 text-[#1B1B1B] font-semibold ">
+    <Link href="/" className="hover:text-yellow-500 transition">Home</Link>
+    <Link href="/about" className="hover:text-yellow-500 transition">About</Link>
+    <Link href="/contact" className="hover:text-yellow-500 transition">Contact</Link>
+  </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: menuOpen ? 1 : 0, y: menuOpen ? 0 : -10 }}
-            transition={{ duration: 0.3 }}
-            className={`absolute right-0 mt-2 w-40 bg-white shadow-lg rounded py-2 z-50 ${
-              menuOpen ? "block" : "hidden"
-            }`}
-          >
-            <Link href="/about" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">About</Link>
-            <Link href="/contact" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact</Link>
-          </motion.div>
-        </div>
-      </nav>
+  {/* Mobile Hamburger (shown on small screens only) */}
+  <div className="md:hidden relative" ref={menuRef}>
+    <button
+      onClick={() => setMenuOpen(!menuOpen)}
+      className="text-[#1B1B1B] focus:outline-none"
+    >
+      <Menu size={28} />
+    </button>
+
+    {/* Dropdown */}
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: menuOpen ? 1 : 0, y: menuOpen ? 0 : -10 }}
+      transition={{ duration: 0.3 }}
+      className={`absolute right-0 mt-2 w-40 bg-white shadow-lg rounded py-2 z-50 ${
+        menuOpen ? "block" : "hidden"
+      }`}
+    >
+      <Link href="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Home</Link>
+      <Link href="/about" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">About</Link>
+      <Link href="/contact" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact</Link>
+    </motion.div>
+  </div>
+</nav>
+
 
       {/* Hero Section */}
       <section className="flex flex-col md:flex-row items-center justify-between px-6 sm:px-12 py-12">
@@ -158,43 +174,49 @@ export default function HomePage() {
         />
       </div>
 
-      {/* Product Grid */}
-      <div id="products" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 md:px-12 pb-16">
-        {filteredProducts.map((product) => (
-          <motion.div
-            key={product.id}
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-            className="bg-white shadow-md hover:shadow-xl rounded-2xl overflow-hidden flex flex-col transition-all"
-          >
-            <div className="relative w-full pt-[100%]">
-              <Image src={product.image} alt={product.name} className="absolute top-0 left-0 w-full h-full object-cover" width={550} height={400} />
-            </div>
+     {/* Product Grid */}
+<div
+  id="products"
+  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 md:px-12 pb-16"
+>
+  {filteredProducts.map((product) => (
+    <motion.div
+      key={product.id}
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.3 }}
+      className="bg-white shadow-md hover:shadow-xl rounded-2xl overflow-hidden flex flex-col transition-all cursor-pointer"
+    >
+      {/* Whole card links to details */}
+      <Link href={`/shop/${product.slug}`} className="flex flex-col h-full">
+        <div className="relative w-full pt-[100%]">
+          <Image
+            src={product.image}
+            alt={product.name}
+            className="absolute top-0 left-0 w-full h-full object-cover"
+            width={550}
+            height={400}
+          />
+        </div>
 
-            <div className="p-5 flex flex-col space-y-2">
-              <h2 className="text-lg font-bold text-blue-900">{product.name}</h2>
-              <p className="text-gray-700 font-medium">{product.price}</p>
-              <p className="text-sm text-gray-500">{product.description}</p>
-              <div className="flex gap-3 pt-2">
-                <Link
-                  href={`/shop/${product.slug}`}
-                  className="flex-1 text-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-sm font-medium transition"
-                >
-                  View Details
-                </Link>
-                <a
-                  href={`https://wa.me/923032966692?text=Hello! I am interested in the product: ${product.name} (${product.price})`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 text-center bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full text-sm font-medium transition"
-                >
-                  Order Now
-                </a>
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
+        <div className="p-5 flex flex-col space-y-3 flex-grow">
+          <h2 className="text-lg font-bold text-blue-900">{product.name}</h2>
+          <p className="text-gray-700 font-medium">{product.price}</p>
+          <p className="text-sm text-gray-500 flex-grow">
+            {product.description}
+          </p>
+
+          {/* Clean single button */}
+          <button
+            className="w-full border border-gray-300 hover:border-blue-600 hover:text-blue-600 text-gray-700 px-4 py-2 rounded-full text-sm font-medium transition"
+          >
+            View Details
+          </button>
+        </div>
+      </Link>
+    </motion.div>
+  ))}
+</div>
+
 
       {/* Footer */}
       <footer className="bg-white border-t mt-10 py-8 px-6 text-center">

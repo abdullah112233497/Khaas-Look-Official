@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+
 // import Navbar from "./components/Navbar"; // ✅ this works from layout.tsx
 // import Loading from "./components/Loading";
 
