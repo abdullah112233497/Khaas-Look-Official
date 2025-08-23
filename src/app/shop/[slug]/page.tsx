@@ -5,6 +5,10 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { div } from "framer-motion/client";
+
+
+import Navbar from "../../components/Navbar";
 
 const products = [
   {
@@ -69,6 +73,8 @@ export default function ProductDetailPage() {
 
   return (
     <AnimatePresence>
+      <Navbar/>
+
       <motion.div
         className="min-h-screen bg-gradient-to-b from-blue-50 to-yellow-50 text-gray-800 p-6 flex items-center justify-center font-montserrat"
         initial={{ opacity: 0 }}

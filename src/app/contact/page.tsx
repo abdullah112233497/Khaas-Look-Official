@@ -5,9 +5,14 @@ import Head from "next/head";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+
+
+
+import Navbar from "../components/Navbar";
 export default function ContactPage() {
   return (
     <>
+    
       <div className="font-montserrat">
         {/* ✅ SEO Meta Tags */}
         <Head>
@@ -18,8 +23,8 @@ export default function ContactPage() {
           />
           <link rel="canonical" href="https://khaas-look.vercel.app/contact" />
         </Head>
-
         {/* ✅ Page Content */}
+       <Navbar/>
         <div className="min-h-screen bg-gradient-to-b from-white to-blue-50 px-6 py-16 md:px-20 text-gray-800">
           <motion.div
             className="max-w-4xl mx-auto text-center"

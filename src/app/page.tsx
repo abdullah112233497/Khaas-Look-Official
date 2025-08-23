@@ -7,6 +7,7 @@ import { Menu } from "lucide-react";
 import { motion } from "framer-motion";
 
 
+import Navbar from "./components/Navbar";
 
 const products = [
   {
@@ -76,7 +77,7 @@ export default function HomePage() {
       </Head>
 
 
-
+<Navbar/>
       {/* Hero Section */}
       <section className="flex flex-col md:flex-row items-center justify-between px-6 sm:px-12 py-12">
         <motion.div

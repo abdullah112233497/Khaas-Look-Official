@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 
-import Navbar from "./components/Navbar";
 // import Navbar from "./components/Navbar"; // ✅ this works from layout.tsx
 // import Loading from "./components/Loading";
 
@@ -36,8 +35,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-      {/* ✅ Navbar appears everywhere */}
-        <Navbar />
+    
         {children}
       </body>
     </html>

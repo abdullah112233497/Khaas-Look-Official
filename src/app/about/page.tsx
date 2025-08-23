@@ -5,6 +5,9 @@ import Head from "next/head";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+import Navbar from "../components/Navbar";
+
+
 export default function AboutPage() {
   return (
     <>
@@ -19,7 +22,7 @@ export default function AboutPage() {
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://khaas-look.vercel.app/about" />
       </Head>
-
+<Navbar/>
       {/* ✅ About Page Content */}
       <div className="min-h-screen bg-gradient-to-b from-white to-blue-50 px-4 md:px-20 py-16 text-gray-800">
         <motion.div
