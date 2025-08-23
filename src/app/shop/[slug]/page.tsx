@@ -9,11 +9,11 @@ import { useState, useEffect } from "react";
 const products = [
   {
     id: 1,
-    name: "Elegant Blue Dress",
-    image: "/Limelight_lawn.jpeg",
-    slug: "elegant-blue-dress",
+    name: "Brown flower | 2 Piece Lawn",
+    image: "/Brown _lawn.jpg",
+    slug: "Lawn-brown-2_piece",
     price: "PKR 3,999",
-    description: "An elegant blue formal dress, perfect for parties and formal events.",
+    description: "An elegant Brown Flowers design 2 Piece Printed Lawn, perfect for parties and formal event",
   },
   {
     id: 2,
