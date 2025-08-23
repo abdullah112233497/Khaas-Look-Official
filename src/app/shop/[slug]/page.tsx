@@ -10,7 +10,7 @@ const products = [
   {
     id: 1,
     name: "Brown flower | 2 Piece Lawn",
-    image: "/Brown _lawn.jpg",
+    image: "/blue lawn.jpeg",
     slug: "Lawn-brown-2_piece",
     price: "PKR 3,999",
     description:
@@ -92,7 +92,8 @@ export default function ProductDetailPage() {
               alt={product.name}
               width={500}
               height={500}
-              className="object-cover w-full md:w-1/2"
+              className="object-cover " 
+              // w-full md:w-1/2 I removed that from the above
             />
           </motion.div>
 

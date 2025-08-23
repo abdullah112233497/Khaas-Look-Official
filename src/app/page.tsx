@@ -12,7 +12,7 @@ const products = [
   {
     id: 1,
     name: "Brown flower | 2 Piece Lawn",
-    image: "/Limelight_lawn.jpeg",
+    image: "/Brown _lawn.jpg",
     slug: "Lawn-brown-2_piece",
     price: "PKR 1,499",
     description: "An elegant Brown Flowers design 2 Piece Printed Lawn, perfect for parties and formal event",
