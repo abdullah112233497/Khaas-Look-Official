@@ -14,13 +14,6 @@ import Navbar from "../components/Navbar";
 
 // SEO
 
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Contact Us | Khaas Look",
-  description:
-    "Get in touch with Khaas Look for orders, queries, and customer support. Connect with us via WhatsApp, Instagram, or email.",
-};
 
 
 

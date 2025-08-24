@@ -8,14 +8,7 @@ import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 
 
-// SEO
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "About Us | Khaas Look",
-  description:
-    "Learn more about Khaas Look – a ladies' clothing brand offering stylish and elegant fashion in Pakistan.",
-};
 
 export default function AboutPage() {
   return (
