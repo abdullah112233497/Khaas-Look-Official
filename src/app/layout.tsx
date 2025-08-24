@@ -38,9 +38,7 @@ export const metadata: Metadata = {
     locale: "en_PK",
     type: "website",
   },
-   other: {
-    "google-site-verification": "google5b63d1fb5b3e5579.html", // paste your unique code here
-  },
+   
 };
 // SEO End
 
