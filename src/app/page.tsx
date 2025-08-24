@@ -27,6 +27,14 @@ const products = [
     description: "Shimmering golden dress designed for glamorous evening occasions.",
   },
 ];
+// SEO
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Khaas Look | Home",
+  description:
+    "Welcome to Khaas Look – Explore premium Pakistani ladies' clothing, suits, and dresses with elegant designs.",
+};
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);

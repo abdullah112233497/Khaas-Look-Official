@@ -30,6 +30,22 @@ const products = [
   },
 ];
 
+
+// SEO////////////////////////////////////////////////
+import type { Metadata } from "next";
+
+type Props = {
+  params: { slug: string };
+};
+
+export function generateMetadata({ params }: Props): Metadata {
+  return {
+    title: `${params.slug} | Khaas Look`,
+    description: `Buy ${params.slug} from Khaas Look. Elegant, stylish, and perfect for any occasion.`,
+  };
+}
+
+// SEO ENDDDDDDDDDDDDDDDDDDDDDDD
 export default function ProductDetailPage() {
   const router = useRouter();
   const params = useParams();

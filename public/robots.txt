@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://khaas-look.vercel.app/sitemap.xml
