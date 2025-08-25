@@ -23,19 +23,19 @@ export default function Navbar() {
   return (
     <nav className="bg-[#F5F5F5] p-4 flex items-center justify-between relative shadow-md">
       {/* Left: Logo */}
-      <div className="flex items-center space-x-3">
-        <Image
-          src="/Khaas Look logo.jpg"
-          alt="Khaas Look Logo"
-          width={40}
-          height={40}
-          className="rounded-full"
-        />
-        <span className="font-extrabold">
-          <span className="text-[#1B1B1B] text-xl font-adria">Khaas</span>
-          <span className="text-[#F6D86A] text-lg font-lucidan">Look</span>
-        </span>
-      </div>
+     {/* Left: Logo */}
+<div className="flex items-center">
+  <Link href="/" passHref>
+    <Image
+      src="/khaaslookNav.png"  // make sure this file is placed inside your public/ folder
+      alt="Khaas Look Logo"
+      width={150}   // adjust size as per your need
+      height={50}
+      className="cursor-pointer"
+    />
+  </Link>
+</div>
+
 
       {/* Desktop Menu */}
       <div className="hidden md:flex space-x-10 text-[#1B1B1B] font-semibold">
