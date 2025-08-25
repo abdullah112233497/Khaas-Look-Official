@@ -11,13 +11,14 @@ import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 
 
-
 // SEO
 
 
 
 
 export default function ContactPage() {
+  
+  
   return (
     <>
     

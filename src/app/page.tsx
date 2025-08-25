@@ -1,10 +1,11 @@
 "use client";
+
+
 import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-
 import Navbar from "./components/Navbar";
 
 const products = [
@@ -34,6 +35,8 @@ export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState(""); // 🔹 added state for search
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
+
+
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1200);
@@ -138,54 +141,57 @@ export default function HomePage() {
       <br />
       <br />
       <br />
-       <br />
+      <br />
       <br />
       <br />
       {/* <hr className="border-t border-gray-400" /> */}
 
-       
 
-      {/* Product Grid */}
-      <div
-        id="products"
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 md:px-12 pb-16"
-      >
-        {filteredProducts.map((product) => (
-          <motion.div
-            key={product.id}
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.3 }}
-            className="bg-white shadow-md hover:shadow-xl rounded-2xl overflow-hidden flex flex-col transition-all cursor-pointer"
-          >
-            <Link href={`/shop/${product.slug}`} className="flex flex-col h-full">
-              <div className="relative w-full pt-[100%]">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  className="absolute top-0 left-0 w-full h-full object-cover"
-                  width={550}
-                  height={400}
-                />
-              </div>
+      <section id="products-section" className="mt-6">
+        {/* 🔥 Your products grid here */}
 
-              <div className="p-5 flex flex-col space-y-3 flex-grow">
-                <h2 className="text-lg font-bold text-blue-900">
-                  {product.name}
-                </h2>
-                <p className="text-gray-700 font-medium">{product.price}</p>
-                <p className="text-sm text-gray-500 flex-grow">
-                  {product.description}
-                </p>
+        {/* Product Grid */}
+        <div
+          id="products"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 md:px-12 pb-16"
+        >
+          {filteredProducts.map((product) => (
+            <motion.div
+              key={product.id}
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white shadow-md hover:shadow-xl rounded-2xl overflow-hidden flex flex-col transition-all cursor-pointer"
+            >
+              <Link href={`/shop/${product.slug}`} className="flex flex-col h-full">
+                <div className="relative w-full pt-[100%]">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    width={550}
+                    height={400}
+                  />
+                
+                </div>
 
-                <button className="w-full border border-gray-300 hover:border-blue-600 hover:text-blue-600 text-gray-700 px-4 py-2 rounded-full text-sm font-medium transition">
-                  View Details
-                </button>
-              </div>
-            </Link>
-          </motion.div>
-        ))}
-      </div>
+                <div className="p-5 flex flex-col space-y-3 flex-grow">
+                  <h2 className="text-lg font-bold text-blue-900">
+                    {product.name}
+                  </h2>
+                  <p className="text-gray-700 font-medium">{product.price}</p>
+                  <p className="text-sm text-gray-500 flex-grow">
+                    {product.description}
+                  </p>
 
+                  <button className="w-full border border-gray-300 hover:border-blue-600 hover:text-blue-600 text-gray-700 px-4 py-2 rounded-full text-sm font-medium transition">
+                    View Details
+                  </button>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </section>
       {/* Footer */}
       <footer className="bg-white border-t mt-10 py-8 px-6 text-center">
         <h3 className="text-lg font-semibold text-blue-900 mb-4">Follow Us</h3>

@@ -13,6 +13,7 @@ interface NavbarProps {
 
 export default function Navbar({ searchQuery, setSearchQuery }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [tempQuery, setTempQuery] = useState(""); // 🔑 Temporary search text
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -24,6 +25,39 @@ export default function Navbar({ searchQuery, setSearchQuery }: NavbarProps) {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  // 🔎 Run search when clicking the button
+  const handleSearch = () => {
+    if (setSearchQuery) {
+      if (tempQuery.trim() === "") {
+        setSearchQuery(""); // reset to show all products
+      } else {
+        setSearchQuery(tempQuery);
+      }
+
+      // 👇 Scroll smoothly to products section after searching
+      setTimeout(() => {
+        const productsSection = document.getElementById("products-section");
+        if (productsSection) {
+          productsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 150);
+    }
+  };
+
+  // 🔎 Run search when pressing Enter
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
+  // 🔎 Reset when input cleared manually
+  useEffect(() => {
+    if (tempQuery.trim() === "" && setSearchQuery) {
+      setSearchQuery(""); // reset when cleared
+    }
+  }, [tempQuery, setSearchQuery]);
 
   return (
     <nav className="bg-[#F5F5F5] px-3 sm:px-6 py-4 flex items-center justify-between relative shadow-md">
@@ -40,18 +74,22 @@ export default function Navbar({ searchQuery, setSearchQuery }: NavbarProps) {
         </Link>
       </div>
 
-      {/* Center: Amazon-style Search Bar */}
+      {/* Center: Search Bar */}
       <div className="flex flex-1 min-w-0 justify-center px-2 sm:px-4">
         {setSearchQuery && (
           <div className="flex w-full max-w-xl bg-white rounded-lg overflow-hidden border border-gray-300 shadow-sm">
             <input
               type="text"
-              value={searchQuery ?? ""}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              value={tempQuery}
+              onChange={(e) => setTempQuery(e.target.value)}
+              onKeyDown={handleKeyDown}
               placeholder="Search for products..."
               className="flex-grow px-2 py-1 text-black placeholder-gray-500 focus:outline-none text-sm sm:text-base min-w-0"
             />
-            <button className="bg-yellow-500 hover:bg-yellow-600 px-3 sm:px-4 flex items-center justify-center">
+            <button
+              onClick={handleSearch}
+              className="bg-yellow-500 hover:bg-yellow-600 px-3 sm:px-4 flex items-center justify-center"
+            >
               <Search size={18} className="text-white" />
             </button>
           </div>

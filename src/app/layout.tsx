@@ -38,7 +38,6 @@ export const metadata: Metadata = {
     locale: "en_PK",
     type: "website",
   },
-   
 };
 // SEO End
 
@@ -52,14 +51,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// export const metadata: Metadata = {
-//   title: "Khaas Look Official",
-//   description: "Khaas look Official Site",
-//  icons: {
-//   icon: "/favicon.ico",
-// },
-// };
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -69,9 +60,18 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+       {children}
+
+        {/* ✅ Floating WhatsApp Chat Button */}
+        <a
+          href="https://wa.me/923032966692?text=Hello%20I%20need%20help%20with%20a%20product%20on%20Khaas%20Look"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-4 right-4 bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg z-50 flex items-center justify-center transition-transform transform hover:scale-110"
         >
-    
-        {children}
+          <img src="./icons/Whatsapp.png" alt="WhatsApp" className="w-8 h-8" />
+        </a>
       </body>
     </html>
   );
