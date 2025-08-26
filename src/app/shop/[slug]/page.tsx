@@ -85,7 +85,7 @@ export default function ProductDetailPage() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-white">
         <Image
-          src="/Khaas Look logo.jpg"
+          src="/khaaslooklogo.jpg"
           alt="Khaas Look Logo"
           width={150}
           height={150}
