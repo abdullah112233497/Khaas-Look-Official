@@ -19,8 +19,13 @@ export const metadata: Metadata = {
     "Pakistani fashion",
     "online clothing store",
     "boutique dresses",
-    "unstitched colth",
+    "unstitched clothes",
   ],
+  icons: {
+    icon: "/favicon.ico",  // ✅ make sure you add favicon file in /public folder
+    shortcut: "/favicon.ico",
+    apple: "/khaaslooklogo.jpg", // ✅ optional (for iOS)
+  },
   openGraph: {
     title: "Khaas Look | Official Clothing Store",
     description:
@@ -29,7 +34,7 @@ export const metadata: Metadata = {
     siteName: "Khaas Look",
     images: [
       {
-        url: "https://khaas-look.vercel.app/Khaas Look logo.jpg",
+        url: "https://khaas-look.vercel.app/Fashion_Khaas.png", // ✅ Use your uploaded SEO image
         width: 1200,
         height: 630,
         alt: "Khaas Look Clothing Banner",
@@ -39,6 +44,7 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
+
 // SEO End
 
 const geistSans = Geist({

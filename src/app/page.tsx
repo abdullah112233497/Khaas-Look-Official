@@ -104,7 +104,7 @@ export default function HomePage() {
           transition={{ duration: 1 }}
         >
           <Image
-            src="/Khaas Look logo.jpg"
+            src="/khaaslooklogo.jpg"
             alt="Khaas Look Logo"
             width={150}
             height={150}
