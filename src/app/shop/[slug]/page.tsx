@@ -28,6 +28,33 @@ const products = [
     price: "PKR 5,499",
     description: "Shimmering golden dress designed for glamorous evening occasions.",
   },
+     {
+    id: 3,
+    name: "Pink Flowerable formal",
+    image: "/blue lawn.jpeg",
+    slug: "pink-flowerable-formal",
+    price: "PKR 1,599",
+    description:
+      "Shimmering Pink Flowerable dress designed for glamorous evening occasions.",
+  },
+    {
+    id: 4,
+    name: "Red Flowerable formal",
+    image: "/blue lawn.jpeg",
+    slug: "red-flowerable-formal",
+    price: "PKR 2,599",
+    description:
+      "Shimmering Pink Flowerable dress designed for glamorous evening occasions.",
+  },
+   {
+    id: 5,
+    name: "black Flowerable formal",
+    image: "/blue lawn.jpeg",
+    slug: "black-flowerable-formal",
+    price: "PKR 3,199",
+    description:
+      "Shimmering Pink Flowerable dress designed for glamorous evening occasions.",
+  },
 ];
 
 

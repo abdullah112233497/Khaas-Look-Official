@@ -8,6 +8,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Navbar from "./components/Navbar";
 
+
+
+
 const products = [
   {
     id: 1,
@@ -27,6 +30,33 @@ const products = [
     description:
       "Shimmering golden dress designed for glamorous evening occasions.",
   },
+   {
+    id: 3,
+    name: "Pink Flowerable formal",
+    image: "/blue lawn.jpeg",
+    slug: "pink-flowerable-formal",
+    price: "PKR 1,599",
+    description:
+      "Shimmering Pink Flowerable dress designed for glamorous evening occasions.",
+  },
+  {
+    id: 4,
+    name: "Red Flowerable formal",
+    image: "/blue lawn.jpeg",
+    slug: "red-flowerable-formal",
+    price: "PKR 2,599",
+    description:
+      "Shimmering Pink Flowerable dress designed for glamorous evening occasions.",
+  },
+  {
+    id: 5,
+    name: "black Flowerable formal",
+    image: "/blue lawn.jpeg",
+    slug: "black-flowerable-formal",
+    price: "PKR 3,199",
+    description:
+      "Shimmering Pink Flowerable dress designed for glamorous evening occasions.",
+  },
 ];
 
 export default function HomePage() {
@@ -37,6 +67,7 @@ export default function HomePage() {
   const menuRef = useRef<HTMLDivElement | null>(null);
 
 
+  const [expandedProducts, setExpandedProducts] = useState<number[]>([]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1200);
@@ -153,14 +184,15 @@ export default function HomePage() {
         {/* Product Grid */}
         <div
           id="products"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 md:px-12 pb-16"
+           className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 md:px-12 pb-16"
+
         >
           {filteredProducts.map((product) => (
             <motion.div
               key={product.id}
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
-              className="bg-white shadow-md hover:shadow-xl rounded-2xl overflow-hidden flex flex-col transition-all cursor-pointer"
+              className="bg-white shadow-md hover:shadow-xl rounded-none overflow-hidden flex flex-col transition-all cursor-pointer"
             >
               <Link href={`/shop/${product.slug}`} className="flex flex-col h-full">
                 <div className="relative w-full pt-[100%]">
@@ -171,7 +203,7 @@ export default function HomePage() {
                     width={550}
                     height={400}
                   />
-                
+
                 </div>
 
                 <div className="p-5 flex flex-col space-y-3 flex-grow">
@@ -179,10 +211,20 @@ export default function HomePage() {
                     {product.name}
                   </h2>
                   <p className="text-gray-700 font-medium">{product.price}</p>
-                  <p className="text-sm text-gray-500 flex-grow">
-                    {product.description}
-                  </p>
+                  {/* fixxx */}
+                 <p className="text-sm text-gray-500 flex-grow hidden sm:block">
+  {product.description.length > 60
+    ? `${product.description.slice(0, 20)}... `
+    : product.description}
+  {product.description.length > 20 && (
+     <span className="text-blue-600 underline text-xs ml-1">
+    Read More
+  </span>
+  )}
+</p>
 
+
+                  {/* fixx end */}
                   <button className="w-full border border-gray-300 hover:border-blue-600 hover:text-blue-600 text-gray-700 px-4 py-2 rounded-full text-sm font-medium transition">
                     View Details
                   </button>
