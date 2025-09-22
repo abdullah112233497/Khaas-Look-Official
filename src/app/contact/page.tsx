@@ -4,52 +4,44 @@
 import Head from "next/head";
 import Image from "next/image";
 import { motion } from "framer-motion";
-
-
-
-
 import Navbar from "../components/Navbar";
 
-
-// SEO
-
-
-
-
 export default function ContactPage() {
-  
-  
   return (
     <>
-    
-      <div className="font-montserrat">
+      <div className="font-montserrat min-h-screen bg-[#FFFFFF] text-[#1B1B1B]">
         {/* ✅ SEO Meta Tags */}
         <Head>
-          <title>Contact Us | Khaas Look</title>
+          <title>Contact Us | Styvenza</title>
           <meta
             name="description"
             content="Contact Khaas Look via WhatsApp, Instagram, or Email. We're happy to assist you with your ladies clothing orders or inquiries."
           />
-          <link rel="canonical" href="https://khaas-look.vercel.app/contact" />
+          <link rel="canonical" href="https://Styvenza.vercel.app/contact" />
         </Head>
-        {/* ✅ Page Content */}
-       <Navbar/>
-        <div className="min-h-screen bg-gradient-to-b from-white to-blue-50 px-6 py-16 md:px-20 text-gray-800">
+
+        {/* ✅ Navbar */}
+        <Navbar />
+
+        {/* ✅ Contact Page Content */}
+        <div className="min-h-screen px-6 py-16 md:px-20">
           <motion.div
             className="max-w-4xl mx-auto text-center"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
+            {/* Title */}
             <motion.h1
-              className="text-4xl md:text-5xl font-bold text-blue-800 mb-6"
+              className="text-4xl md:text-5xl font-bold text-[#46656F] mb-6"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8 }}
             >
-              Contact <span className="text-yellow-500">Khaas Look</span>
+              Contact <span className="text-[#8FABB7]">Styvenza</span>
             </motion.h1>
 
+            {/* Subtitle */}
             <motion.p
               className="text-lg mb-12 text-gray-700"
               initial={{ opacity: 0 }}
@@ -79,12 +71,12 @@ export default function ContactPage() {
                 href="https://wa.me/923032966692"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 px-6 py-4 bg-green-500 text-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                className="flex items-center gap-3 px-6 py-4 bg-[#46656F] text-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Image
-                  src="/icons/whatsapp.svg"
+                  src="/icons/whatsap.png"
                   alt="WhatsApp"
                   width={28}
                   height={28}
@@ -97,13 +89,12 @@ export default function ContactPage() {
                 href="https://www.instagram.com/khaaslook"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 px-6 py-4 text-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300
-                  bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"
+                className="flex items-center gap-3 px-6 py-4 bg-[#8FABB7] text-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Image
-                  src="/icons/instagram.svg"
+                  src="/icons/instagram.png"
                   alt="Instagram"
                   width={28}
                   height={28}
@@ -114,12 +105,12 @@ export default function ContactPage() {
               {/* Email */}
               <motion.a
                 href="mailto:khaaslook@gmail.com"
-                className="flex items-center gap-3 px-6 py-4 bg-blue-600 text-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                className="flex items-center gap-3 px-6 py-4 bg-[#D8DFE5] text-white rounded-2xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <Image
-                  src="/icons/mail.svg"
+                  src="/icons/mail.png"
                   alt="Email"
                   width={28}
                   height={28}
@@ -128,6 +119,7 @@ export default function ContactPage() {
               </motion.a>
             </motion.div>
 
+            {/* Availability */}
             <motion.p
               className="text-sm text-gray-600"
               initial={{ opacity: 0 }}
@@ -139,14 +131,14 @@ export default function ContactPage() {
           </motion.div>
         </div>
 
-        {/* ✅ Footer Section */}
+        {/* ✅ Footer Section (matching Home/About) */}
         <motion.footer
-          className="bg-white border-t mt-10 py-10 px-6 md:px-10 text-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 1 }}
+          className="bg-[#46656F] border-t mt-10 py-10 px-6 md:px-10 text-center text-white"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9 }}
         >
-          <h3 className="text-xl font-semibold text-blue-900 mb-4">Follow Us</h3>
+          <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
           <motion.div
             className="flex justify-center space-x-6 mb-6"
             initial="hidden"
@@ -161,10 +153,10 @@ export default function ContactPage() {
             }}
           >
             {[
-              { href: "https://www.facebook.com/share/1FdjigndyY/", icon: "facebook.svg" },
-              { href: "https://www.instagram.com/khaaslook", icon: "instagram.svg" },
-              { href: "https://wa.me/923032966692", icon: "whatsapp.svg" },
-              { href: "https://www.tiktok.com/@khaaslook?_t=ZS-8yLTrVlsfcQ&_r=1", icon: "tiktok.svg" },
+              { href: "https://www.facebook.com/share/1FdjigndyY/", icon: "facebook.png" },
+              { href: "https://www.instagram.com/khaaslook", icon: "instagram.png" },
+              { href: "https://wa.me/923032966692", icon: "whatsap.png" },
+              { href: "https://www.tiktok.com/@khaaslook", icon: "tiktok.png" },
             ].map((social, index) => (
               <motion.a
                 key={index}
@@ -180,12 +172,13 @@ export default function ContactPage() {
                   alt="Social Icon"
                   width={28}
                   height={28}
+                  className="hover:scale-125 transition-transform"
                 />
               </motion.a>
             ))}
           </motion.div>
-          <p className="text-sm text-gray-500">
-            &copy; 2025 Khaas Look. All rights reserved.
+          <p className="text-sm text-gray-200">
+            &copy; 2025 Styvenza. All rights reserved.
           </p>
         </motion.footer>
       </div>

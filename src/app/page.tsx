@@ -1,15 +1,12 @@
 "use client";
 
-
 import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Navbar from "./components/Navbar";
-
-
-
+import { TypeAnimation } from "react-type-animation";
 
 const products = [
   {
@@ -30,7 +27,7 @@ const products = [
     description:
       "Shimmering golden dress designed for glamorous evening occasions.",
   },
-   {
+  {
     id: 3,
     name: "Pink Flowerable formal",
     image: "/blue lawn.jpeg",
@@ -46,35 +43,31 @@ const products = [
     slug: "red-flowerable-formal",
     price: "PKR 2,599",
     description:
-      "Shimmering Pink Flowerable dress designed for glamorous evening occasions.",
+      "Shimmering Red Flowerable dress designed for glamorous evening occasions.",
   },
   {
     id: 5,
-    name: "black Flowerable formal",
+    name: "Black Flowerable formal",
     image: "/blue lawn.jpeg",
     slug: "black-flowerable-formal",
     price: "PKR 3,199",
     description:
-      "Shimmering Pink Flowerable dress designed for glamorous evening occasions.",
+      "Shimmering Black Flowerable dress designed for glamorous evening occasions.",
   },
 ];
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [filteredProducts, setFilteredProducts] = useState(products);
-  const [searchQuery, setSearchQuery] = useState(""); // 🔹 added state for search
+  const [searchQuery, setSearchQuery] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
-
-
-  const [expandedProducts, setExpandedProducts] = useState<number[]>([]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1200);
     return () => clearTimeout(timer);
   }, []);
 
-  // 🔹 filter products when search changes
   useEffect(() => {
     const value = searchQuery.toLowerCase();
     const filtered = products.filter(
@@ -97,15 +90,15 @@ export default function HomePage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white overflow-x-hidden">
+      <div className="min-h-screen flex items-center justify-center bg-[#D8DFE5] overflow-x-hidden">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
         >
           <Image
-            src="/khaaslooklogo.jpg"
-            alt="Khaas Look Logo"
+            src="/styvenza_logo.jpg"
+            alt="Styvenza Logo"
             width={150}
             height={150}
             className="rounded-full animate-pulse"
@@ -116,18 +109,16 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F5F5F5] text-[#1B1B1B] overflow-x-hidden font-montserrat">
+    <div className="min-h-screen bg-[#FFFFFF] text-[#1B1B1B] overflow-x-hidden font-montserrat">
       <Head>
-        <title>Khaas Look - Official Store</title>
+        <title>Styvenza - Official Store</title>
         <meta
           name="description"
           content="Elegant ladies clothing at affordable prices. Order now from Khaas Look!"
         />
       </Head>
 
-      {/* 🔹 Navbar with search props */}
       <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-
 
       {/* Hero Section */}
       <section className="flex flex-col md:flex-row items-center justify-between px-6 sm:px-12 py-12">
@@ -137,16 +128,27 @@ export default function HomePage() {
           transition={{ duration: 0.8 }}
           className="max-w-lg"
         >
-          <h1 className="text-3xl sm:text-5xl font-extrabold leading-snug">
-            LET’S <span className="text-blue-700">EXPLORE</span>{" "}
-            <span className="bg-yellow-400 px-2">UNIQUE</span> CLOTHES.
+          <h1 className="text-3xl sm:text-5xl font-extrabold leading-snug text-[#46656F] min-h-[80px] flex items-center">
+            {/* 👇 This keeps height even when text is empty */}
+            <TypeAnimation
+              sequence={[
+                "LET’S EXPLORE UNIQUE CLOTHES.",
+                2000,
+                "",
+                500,
+              ]}
+              wrapper="span"
+              speed={70}
+              repeat={Infinity}
+              className="text-[#46656F]"
+            />
           </h1>
-          <p className="mt-4 text-gray-600">
+          <p className="mt-4 text-gray-700">
             Live for Influential and Innovative fashion!
           </p>
           <Link
             href="#products"
-            className="inline-block mt-6 px-6 py-3 bg-gradient-to-r from-yellow-400 to-yellow-600 text-white font-semibold rounded-full shadow-lg hover:scale-105 hover:shadow-xl transition transform duration-300"
+            className="inline-block mt-6 px-6 py-3 bg-[#46656F] text-white font-semibold rounded-full shadow-lg hover:bg-[#8FABB7] hover:scale-105 hover:shadow-xl transition transform duration-300"
           >
             Shop Now
           </Link>
@@ -163,80 +165,92 @@ export default function HomePage() {
             alt="Fashion Model"
             width={550}
             height={550}
-            className="rounded-xl "
+            className="rounded-xl"
           />
         </motion.div>
       </section>
 
-      {/* 🔹 Removed old search bar from here */}
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      {/* <hr className="border-t border-gray-400" /> */}
-
-
+      {/* Product Section */}
       <section id="products-section" className="mt-6">
-        {/* 🔥 Your products grid here */}
-
-        {/* Product Grid */}
-        <div
+        <motion.div
           id="products"
-           className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 md:px-12 pb-16"
-
+          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 md:px-12 pb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.15 }} // 👈 will animate every time
+          variants={{
+            hidden: { opacity: 0, y: 40 },
+            visible: {
+              opacity: 1,
+              y: 0,
+              transition: {
+                staggerChildren: 0.15,
+                duration: 0.6,
+                ease: "easeOut",
+              },
+            },
+          }}
         >
           {filteredProducts.map((product) => (
             <motion.div
               key={product.id}
-              whileHover={{ scale: 1.02 }}
+              variants={{
+                hidden: { opacity: 0, y: 50, scale: 0.95 },
+                visible: { opacity: 1, y: 0, scale: 1 },
+              }}
+              whileHover={{
+                scale: 1.05,
+                y: -5,
+                boxShadow: "0px 8px 25px rgba(0,0,0,0.15)",
+              }}
+              whileTap={{ scale: 0.95, rotate: -1 }}
               transition={{ duration: 0.3 }}
-              className="bg-white shadow-md hover:shadow-xl rounded-none overflow-hidden flex flex-col transition-all cursor-pointer"
+              className="bg-[#D8DFE5] border border-[#8FABB7] shadow-md hover:shadow-xl rounded-2xl overflow-hidden flex flex-col cursor-pointer transition-all"
             >
-              <Link href={`/shop/${product.slug}`} className="flex flex-col h-full">
-                <div className="relative w-full pt-[100%]">
+              <Link
+                href={`/shop/${product.slug}`}
+                className="flex flex-col h-full"
+              >
+                {/* Product Image */}
+                <div className="relative w-full pt-[100%] overflow-hidden">
                   <Image
                     src={product.image}
                     alt={product.name}
-                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    className="absolute top-0 left-0 w-full h-full object-cover rounded-t-2xl transition-transform duration-500 hover:scale-110"
                     width={550}
                     height={400}
                   />
-
                 </div>
 
+                {/* Product Info */}
                 <div className="p-5 flex flex-col space-y-3 flex-grow">
-                  <h2 className="text-lg font-bold text-blue-900">
+                  <h2 className="text-lg font-bold text-[#1B1B1B]">
                     {product.name}
                   </h2>
-                  <p className="text-gray-700 font-medium">{product.price}</p>
-                  {/* fixxx */}
-                 <p className="text-sm text-gray-500 flex-grow hidden sm:block">
-  {product.description.length > 60
-    ? `${product.description.slice(0, 20)}... `
-    : product.description}
-  {product.description.length > 20 && (
-     <span className="text-blue-600 underline text-xs ml-1">
-    Read More
-  </span>
-  )}
-</p>
-
-
-                  {/* fixx end */}
-                  <button className="w-full border border-gray-300 hover:border-blue-600 hover:text-blue-600 text-gray-700 px-4 py-2 rounded-full text-sm font-medium transition">
+                  <p className="text-[#46656F] font-medium">{product.price}</p>
+                  <p className="text-sm text-gray-600 flex-grow hidden sm:block">
+                    {product.description.length > 60
+                      ? `${product.description.slice(0, 20)}... `
+                      : product.description}
+                    {product.description.length > 20 && (
+                      <span className="text-[#46656F] underline text-xs ml-1">
+                        Read More
+                      </span>
+                    )}
+                  </p>
+                  <button className="w-full bg-[#46656F] text-white hover:bg-[#8FABB7] px-4 py-2 rounded-full text-sm font-medium transition duration-300">
                     View Details
                   </button>
                 </div>
               </Link>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
+
       {/* Footer */}
-      <footer className="bg-white border-t mt-10 py-8 px-6 text-center">
-        <h3 className="text-lg font-semibold text-blue-900 mb-4">Follow Us</h3>
+      <footer className="bg-[#46656F] border-t mt-10 py-8 px-6 text-center text-white">
+        <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
         <div className="flex justify-center space-x-6 mb-4">
           <a
             href="https://www.facebook.com/share/1FdjigndyY/"
@@ -245,7 +259,7 @@ export default function HomePage() {
           >
             <Image
               className="hover:scale-125 transition-transform"
-              src="/icons/facebook.svg"
+              src="/icons/facebook.png"
               alt="Facebook"
               width={28}
               height={28}
@@ -258,7 +272,7 @@ export default function HomePage() {
           >
             <Image
               className="hover:scale-125 transition-transform"
-              src="/icons/instagram.svg"
+              src="/icons/instagram.png"
               alt="Instagram"
               width={28}
               height={28}
@@ -271,7 +285,7 @@ export default function HomePage() {
           >
             <Image
               className="hover:scale-125 transition-transform"
-              src="/icons/whatsapp.svg"
+              src="/icons/whatsap.png"
               alt="WhatsApp"
               width={28}
               height={28}
@@ -284,15 +298,15 @@ export default function HomePage() {
           >
             <Image
               className="hover:scale-125 transition-transform"
-              src="/icons/tiktok.svg"
+              src="/icons/tiktok.png"
               alt="TikTok"
               width={28}
               height={28}
             />
           </a>
         </div>
-        <p className="text-sm text-gray-500">
-          &copy; 2025 Khaas Look. All rights reserved.
+        <p className="text-sm text-gray-200">
+          &copy; 2025 Styvenza. All rights reserved.
         </p>
       </footer>
     </div>
