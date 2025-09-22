@@ -161,7 +161,7 @@ export default function HomePage() {
           className="mt-10 md:mt-0"
         >
           <Image
-            src="/Fashion_Khaas.png"
+            src="/Fashion_Styvenza.png"
             alt="Fashion Model"
             width={550}
             height={550}
