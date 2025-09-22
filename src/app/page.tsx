@@ -118,93 +118,88 @@ export default function HomePage() {
         />
       </Head>
 
+      {/* Navbar */}
       <Navbar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
       {/* Hero Section */}
-      <section className="flex flex-col md:flex-row items-center justify-between px-6 sm:px-12 py-12">
+      <section className="relative flex flex-col md:flex-row items-center justify-between px-6 sm:px-12 min-h-[450px] md:min-h-[500px] lg:min-h-[600px]">
+        {/* Left side text */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-lg"
+          className="max-w-lg z-10 text-center md:text-left flex flex-col items-center md:items-start"
         >
-          <h1 className="text-3xl sm:text-5xl font-extrabold leading-snug text-[#46656F] min-h-[80px] flex items-center">
-            {/* 👇 This keeps height even when text is empty */}
-            <TypeAnimation
-              sequence={[
-                "LET’S EXPLORE UNIQUE CLOTHES.",
-                2000,
-                "",
-                500,
-              ]}
-              wrapper="span"
-              speed={70}
-              repeat={Infinity}
-              className="text-[#46656F]"
-            />
-          </h1>
-          <p className="mt-4 text-gray-700">
+          {/* Fixed height container for animation */}
+          <div className="h-[80px] sm:h-[100px] md:h-[120px] flex items-center justify-center md:justify-start overflow-hidden">
+            <h1 className="text-[clamp(1.5rem,4vw,2.8rem)] font-extrabold leading-snug text-[#46656F]">
+              <TypeAnimation
+                sequence={[
+                  "LET’S EXPLORE UNIQUE CLOTHES.",
+                  2000,
+                  "",
+                  500,
+                ]}
+                wrapper="span"
+                speed={70}
+                repeat={Infinity}
+                className="text-[#46656F] block"
+              />
+            </h1>
+          </div>
+
+          {/* Sub text */}
+          <p className="mt-4 text-gray-700 text-sm sm:text-base md:text-lg">
             Live for Influential and Innovative fashion!
           </p>
-          <Link
-            href="#products"
-            className="inline-block mt-6 px-6 py-3 bg-[#46656F] text-white font-semibold rounded-full shadow-lg hover:bg-[#8FABB7] hover:scale-105 hover:shadow-xl transition transform duration-300"
-          >
-            Shop Now
-          </Link>
+
+          {/* Shop Now Button */}
+          <div className="mt-6 w-full flex justify-center md:justify-start">
+            <Link
+              href="#products"
+              className="inline-block px-6 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-[#46656F] to-[#8FABB7] text-white font-semibold rounded-full shadow-2xl hover:bg-[#8FABB7] hover:scale-110 hover:shadow-2xl transition transform duration-300 text-sm sm:text-base"
+            >
+              Shop Now
+            </Link>
+          </div>
         </motion.div>
 
+        {/* Right side image */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
-          className="mt-10 md:mt-0"
+          className="mt-10 md:mt-0 flex justify-center"
         >
           <Image
             src="/Fashion_Styvenza.png"
             alt="Fashion Model"
             width={550}
             height={550}
-            className="rounded-xl"
+            className="rounded-xl max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[550px] w-full h-auto"
           />
         </motion.div>
       </section>
 
       {/* Product Section */}
       <section id="products-section" className="mt-6">
-        <motion.div
+        <div
           id="products"
           className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 md:px-12 pb-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.15 }} // 👈 will animate every time
-          variants={{
-            hidden: { opacity: 0, y: 40 },
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: {
-                staggerChildren: 0.15,
-                duration: 0.6,
-                ease: "easeOut",
-              },
-            },
-          }}
         >
           {filteredProducts.map((product) => (
             <motion.div
               key={product.id}
-              variants={{
-                hidden: { opacity: 0, y: 50, scale: 0.95 },
-                visible: { opacity: 1, y: 0, scale: 1 },
-              }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              viewport={{ once: false, amount: 0.2 }}
               whileHover={{
                 scale: 1.05,
                 y: -5,
                 boxShadow: "0px 8px 25px rgba(0,0,0,0.15)",
               }}
-              whileTap={{ scale: 0.95, rotate: -1 }}
-              transition={{ duration: 0.3 }}
+              whileTap={{ scale: 0.97 }}
               className="bg-[#D8DFE5] border border-[#8FABB7] shadow-md hover:shadow-xl rounded-2xl overflow-hidden flex flex-col cursor-pointer transition-all"
             >
               <Link
@@ -238,14 +233,14 @@ export default function HomePage() {
                       </span>
                     )}
                   </p>
-                  <button className="w-full bg-[#46656F] text-white hover:bg-[#8FABB7] px-4 py-2 rounded-full text-sm font-medium transition duration-300">
+                  <button className="w-full bg-gradient-to-r from-[#46656F] to-[#8FABB7] text-white hover:bg-[#8FABB7] px-4 py-2 rounded-full text-sm font-medium transition duration-300">
                     View Details
                   </button>
                 </div>
               </Link>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </section>
 
       {/* Footer */}

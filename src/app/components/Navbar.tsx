@@ -28,12 +28,17 @@ export default function Navbar({ searchQuery, setSearchQuery }: NavbarProps) {
 
   const handleSearch = () => {
     if (setSearchQuery) {
+      // If input is empty → show all products
       if (tempQuery.trim() === "") {
-        setSearchQuery("");
+        setSearchQuery(""); // reset filter
       } else {
-        setSearchQuery(tempQuery);
+        setSearchQuery(tempQuery); // apply filter
       }
 
+      // Clear search bar after searching
+      setTempQuery("");
+
+      // Scroll to products section
       setTimeout(() => {
         const productsSection = document.getElementById("products-section");
         if (productsSection) {
@@ -48,12 +53,6 @@ export default function Navbar({ searchQuery, setSearchQuery }: NavbarProps) {
       handleSearch();
     }
   };
-
-  useEffect(() => {
-    if (tempQuery.trim() === "" && setSearchQuery) {
-      setSearchQuery("");
-    }
-  }, [tempQuery, setSearchQuery]);
 
   return (
     <motion.nav
@@ -128,7 +127,7 @@ export default function Navbar({ searchQuery, setSearchQuery }: NavbarProps) {
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={() => setMenuOpen(!menuOpen)}
-          className="text-[#1B1B1B] focus:outline-none"
+          className="text-[#FFFFFF] focus:outline-none"
         >
           <Menu size={28} />
         </motion.button>

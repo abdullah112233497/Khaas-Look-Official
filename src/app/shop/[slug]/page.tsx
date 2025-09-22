@@ -1,12 +1,9 @@
 "use client";
 
-import { notFound, useRouter } from "next/navigation";
+import { notFound, useRouter, useParams } from "next/navigation";
 import Image from "next/image";
-import { useParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { div } from "framer-motion/client";
-
 
 import Navbar from "../../components/Navbar";
 
@@ -28,7 +25,7 @@ const products = [
     price: "PKR 5,499",
     description: "Shimmering golden dress designed for glamorous evening occasions.",
   },
-     {
+  {
     id: 3,
     name: "Pink Flowerable formal",
     image: "/blue lawn.jpeg",
@@ -37,7 +34,7 @@ const products = [
     description:
       "Shimmering Pink Flowerable dress designed for glamorous evening occasions.",
   },
-    {
+  {
     id: 4,
     name: "Red Flowerable formal",
     image: "/blue lawn.jpeg",
@@ -46,7 +43,7 @@ const products = [
     description:
       "Shimmering Pink Flowerable dress designed for glamorous evening occasions.",
   },
-   {
+  {
     id: 5,
     name: "black Flowerable formal",
     image: "/blue lawn.jpeg",
@@ -57,19 +54,12 @@ const products = [
   },
 ];
 
-
-
 export default function ProductDetailPage() {
   const router = useRouter();
   const params = useParams();
   const slug = params?.slug as string;
-  const [isNavigating, setIsNavigating] = useState(false);
-  const [isPageLoading, setIsPageLoading] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsPageLoading(false), 800);
-    return () => clearTimeout(timer);
-  }, []);
+  const [isNavigating, setIsNavigating] = useState(false);
 
   const product = products.find((p) => p.slug === slug);
   if (!product) return notFound();
@@ -81,43 +71,29 @@ export default function ProductDetailPage() {
     }, 600);
   };
 
-  if (isPageLoading || isNavigating) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-white">
-        <Image
-          src="/khaaslooklogo.jpg"
-          alt="Khaas Look Logo"
-          width={150}
-          height={150}
-          className="rounded-full animate-pulse"
-        />
-        {isNavigating && (
-          <p className="mt-4 text-lg font-semibold text-black">
-            Returning to Home...
-          </p>
-        )}
-      </div>
-    );
-  }
-
   return (
     <AnimatePresence>
-      <Navbar/>
+      {/* Navbar with white background */}
+      <div className="bg-white shadow-md sticky top-0 z-50">
+        <Navbar />
+      </div>
 
       <motion.div
-        className="min-h-screen bg-gradient-to-b from-blue-50 to-yellow-50 text-gray-800 p-6 flex items-center justify-center font-montserrat"
+        className="min-h-screen bg-gradient-to-b from-[#EAF0F2] via-[#F6F6F6] to-[#FFFFFF] text-gray-800 px-3 sm:px-6 lg:px-12 py-6 sm:py-10 flex items-center justify-center font-montserrat"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.6 }}
       >
         <motion.div
-          className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row"
+          className="max-w-6xl w-full bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row"
           initial={{ y: 60, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
         >
+          {/* Product Image */}
           <motion.div
+            className="flex-1 flex items-center justify-center bg-[#F7FAFC] p-4 sm:p-6"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -127,29 +103,35 @@ export default function ProductDetailPage() {
               alt={product.name}
               width={500}
               height={500}
-              className="object-cover " 
-              // w-full md:w-1/2 I removed that from the above
+              className="object-cover rounded-lg shadow-md w-full max-h-[350px] sm:max-h-[450px] md:max-h-[500px]"
             />
           </motion.div>
 
+          {/* Product Info */}
           <motion.div
-            className="p-6 flex flex-col space-y-4"
+            className="flex-1 p-4 sm:p-8 md:p-10 flex flex-col space-y-4 sm:space-y-5"
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h1 className="text-2xl font-bold text-blue-900">{product.name}</h1>
-            <p className="text-sm text-gray-600">{product.price}</p>
-            <p className="text-gray-700">{product.description}</p>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#1B1B1B]">
+              {product.name}
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl font-semibold text-[#46656F]">
+              {product.price}
+            </p>
+            <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
+              {product.description}
+            </p>
 
-            <div className="flex space-x-4 mt-auto">
-              {/* ✅ Same button style as View Details */}
+            {/* Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6">
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 href={`https://wa.me/923032966692?text=Hello! I am interested in the product: ${product.name} (${product.price})`}
                 target="_blank"
-                className="px-4 py-2 rounded-2xl bg-gradient-to-r from-yellow-400 to-yellow-500 text-white font-semibold shadow-md hover:shadow-lg transition"
+                className="text-center px-5 py-3 rounded-2xl bg-gradient-to-r from-[#FFD700] to-[#FFC300] text-[#1B1B1B] font-semibold shadow-md hover:shadow-xl transition-all duration-300"
               >
                 Order Now
               </motion.a>
@@ -158,7 +140,7 @@ export default function ProductDetailPage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={handleBack}
-                className="px-4 py-2 rounded-2xl bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold shadow-md hover:shadow-lg transition"
+                className="px-5 py-3 rounded-2xl bg-gradient-to-r from-[#46656F] to-[#8FABB7] text-white font-semibold shadow-md hover:shadow-xl transition-all duration-300"
               >
                 Back to Home
               </motion.button>
